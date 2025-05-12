@@ -51,16 +51,24 @@ def download_pdfs(pdf_links, save_dir):
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
     
+    saved_paths = []
+    
     for link in pdf_links:
         try:
             response = requests.get(link, stream=True)
             if response.status_code == 200:
-                file_name = os.path.join(save_dir, link.split('/')[-1])
-                with open(file_name + '.pdf', 'wb') as f:
+                file_name = link.split('/')[-1]
+                file_path = os.path.join(save_dir, file_name + '.pdf')
+                
+                with open(file_path, 'wb') as f:
                     for chunk in response.iter_content(chunk_size=8192):
                         f.write(chunk)
-                print(f"Downloaded: {file_name}")
+                
+                print(f"Downloaded: {file_path}")
+                saved_paths.append(os.path.abspath(file_path))
             else:
                 print(f"Failed to download: {link} (Status Code: {response.status_code})")
         except Exception as e:
             print(f"Error downloading {link}: {e}")
+    
+    return saved_paths

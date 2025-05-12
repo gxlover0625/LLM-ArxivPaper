@@ -1,8 +1,11 @@
 import os
+import base64
 import streamlit as st
+import pandas as pd
 
 from dotenv import load_dotenv
 
+from streamlit_pdf_viewer import pdf_viewer
 from utils.common import clean_blank, load_config
 from utils.get_html import download_pdfs, extract_pdf_links, extract_title_list, fetch_html
 
@@ -13,6 +16,9 @@ config = load_config() ## 加载配置
 data_dir = config['data_dir']
 if not os.path.exists(data_dir):
     os.makedirs(data_dir)
+
+if 'pdf_list' not in st.session_state:
+    st.session_state.pdf_list = []
 
 with st.sidebar:
     st.title("Arxiv Paper Collector")
@@ -56,6 +62,7 @@ if keypoint_query:
         with st.status("Downloading...", expanded=True) as status:
             for idx, pdf in enumerate(pdf_list):
                 st.markdown(f"- 正在下载：{pdf}")
-                download_pdfs([pdf], data_dir + '/save_pdfs')
+                saved_paths = download_pdfs([pdf], data_dir + '/save_pdfs')
+                st.session_state.pdf_list.append((pdf, saved_paths[0]))
             
             status.update(label="Downloading Complete!", state="complete", expanded=False)
