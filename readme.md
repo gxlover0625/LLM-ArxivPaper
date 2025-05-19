@@ -47,6 +47,8 @@ You can access our web UI by visiting the URL http://localhost:8501/
 
 - To ensure a smooth user experience in the frontend, we have set the maximum number of displayed items to `3` in the configuration file config.yaml. However, the crawler actually retrieves `25` paper links. You can modify this setting at startup if needed.
 ![searching](assets/search.png)
+- The program will download the papers based on the crawled article links and save them to the local directory `./data`. Among these, `./data/paper.html` contains the HTML content of the crawled webpage, and `./data/save_pdfs` stores the locally downloaded papers.
+![alt text](assets/download.png)
 
 ## 📧 Contact
 LLM-ArxivPaper is currently under active development. Your feedback and contributions are highly valued!
