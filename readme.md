@@ -26,9 +26,13 @@ chrome_bin=~/software/chrome/opt/google/chrome/chrome
 
 ## Quick Start
 > [!IMPORTANT]
-> Please make sure to install chrome correctly.
+> Please make sure to install dependencies and chrome correctly according to `Installation` section.
 
-Create a `.env` file and set important variables like below
+Create a `.env` file and set important variables like below.
 ```
 chrome_bin=~/software/chrome/opt/google/chrome/chrome
+```
+Now you can enjoy your journey with LLM-ArxivPaper simply using the following commands.
+```shell
+streamlit run main.py
 ```
