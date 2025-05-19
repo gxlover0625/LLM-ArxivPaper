@@ -1,4 +1,7 @@
 <center><h2>🚀 LLM-ArxivPaper: Gather Arxiv papers, enhance reading via LLMs</h2></center>
+<div align="center">
+<a href="readme_zh.md"><strong>中文文档</strong></a>
+</div>
 
 ## 🎉 News
 - [ ] [2025.5.30] 📚 TODO: Enable interactive Q&A with LLM for scraped papers — ask questions about the paper's key points, methods, results, and more in a conversational format!
