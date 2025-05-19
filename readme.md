@@ -41,9 +41,10 @@ You can access our web UI by visiting the URL http://localhost:8501/
 
 ## 💡 Features
 ### Scrape article
-Please enter keywords in the input bar at the bottom, separating multiple keywords with spaces, such as `LLM RL`.
+Please enter `keywords` in the input bar at the bottom, separating multiple keywords with spaces, such as `LLM RL`.
 ![keyword](assets/keywords.png)
-
+The program will automatically run the crawler to search for the latest papers on the arXiv website based on the keywords provided.
+![searching](assets/search.png)
 
 ## 📧 Contact
 LLM-ArxivPaper is currently under active development. Your feedback and contributions are highly valued!
