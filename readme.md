@@ -23,3 +23,7 @@ Now, you can find chrome in the `~/software/chrome/opt/google/chrome/chrome`. Ne
 ```
 chrome_bin=~/software/chrome/opt/google/chrome/chrome
 ```
+
+## Quick Start
+> [!IMPORTANT]
+> Please make sure to install chrome correctly.
