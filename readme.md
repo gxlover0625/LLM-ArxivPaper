@@ -40,8 +40,9 @@ streamlit run main.py
 You can access our web UI by visiting the URL http://localhost:8501/
 
 ## 💡 Features
-### 🐳 Scrape article
-You
+### Scrape article
+Please enter keywords in the input bar at the bottom, separating multiple keywords with spaces, such as `LLM RL`.
+![keyword](assets/keywords.png)
 
 
 ## 📧 Contact
