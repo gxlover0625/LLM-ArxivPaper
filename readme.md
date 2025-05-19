@@ -44,6 +44,8 @@ You can access our web UI by visiting the URL http://localhost:8501/
 Please enter `keywords` in the input bar at the bottom, separating multiple keywords with spaces, such as `LLM RL`.
 ![keyword](assets/keywords.png)
 The program will automatically run the crawler to search for the latest papers on the arXiv website based on the keywords provided.
+
+To ensure a smooth user experience in the frontend, we have set the maximum number of displayed items to 3 in the configuration file config.py. However, the crawler actually retrieves 25 paper links. You can modify this setting at startup if needed.
 ![searching](assets/search.png)
 
 ## 📧 Contact
