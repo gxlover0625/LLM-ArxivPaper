@@ -27,3 +27,8 @@ chrome_bin=~/software/chrome/opt/google/chrome/chrome
 ## Quick Start
 > [!IMPORTANT]
 > Please make sure to install chrome correctly.
+
+Create a `.env` file and set important variables like below
+```
+chrome_bin=~/software/chrome/opt/google/chrome/chrome
+```
