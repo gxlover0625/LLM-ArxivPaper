@@ -36,3 +36,5 @@ Now you can enjoy your journey with LLM-ArxivPaper simply using the following co
 ```shell
 streamlit run main.py
 ```
+
+**Thank you for your interest in my work!**
