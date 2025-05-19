@@ -36,5 +36,13 @@ Now you can enjoy your journey with LLM-ArxivPaper simply using the following co
 ```shell
 streamlit run main.py
 ```
+## 📧 Contact
+LLM-ArxivPaper is currently under active development. Your feedback and contributions are highly valued!
 
-**Thank you for your interest in my work!**
+- 🐛 **Have suggestions or found a bug?**  
+  Feel free to [submit an issue](https://github.com/gxlover0625/LLM-ArxivPaper/issues ) — we appreciate your input!
+
+- 😊  **Interested in contributing?**  
+  We warmly welcome you to [submit a pull request (PR)](https://github.com/gxlover0625/LLM-ArxivPaper/pulls ). Your contributions can make a big difference.
+
+We are committed to continuously improving this project and will keep a close eye on all issues and PRs. If you find this project helpful, please consider giving it a star! ⭐
