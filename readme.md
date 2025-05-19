@@ -1,6 +1,7 @@
 <center><h2>🚀 LLM-ArxivPaper: Gather Arxiv papers, enhance reading via LLMs</h2></center>
 
 ## 🎉 News
+- [ ] [2025.5.30] 📚 TODO: Enable interactive Q&A with LLM for scraped papers — ask questions about the paper's key points, methods, results, and more in a conversational format!
 - [X] [2025.05.19]🎯📢LLM-ArxivPaper now supports displaying scraped Arxiv papers via Web UI.
 - [X] [2025.05.18]🎯📢LLM-ArxivPaper now supports automated Arxiv paper scraping via Web UI.
 
@@ -36,6 +37,11 @@ Now you can enjoy your journey with LLM-ArxivPaper simply using the following co
 ```shell
 streamlit run main.py
 ```
+
+## 💡 Features
+
+
+
 ## 📧 Contact
 LLM-ArxivPaper is currently under active development. Your feedback and contributions are highly valued!
 
