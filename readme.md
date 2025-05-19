@@ -50,6 +50,12 @@ You can access our web UI by visiting the URL http://localhost:8501/
 - The program will download the papers based on the crawled article links and save them to the local directory `./data`. Among these, `./data/paper.html` contains the HTML content of the crawled webpage, and `./data/save_pdfs` stores the locally downloaded papers.
 ![alt text](assets/download.png)
 
+### Show article
+- Click the `Show` in the sidebar to navigate to the paper display page. A table is displayed, containing three columns: the paper's URL, the paper's title, and the local storage path.
+![alt text](assets/show.png)
+- Selecting a row in the table will display the full text of the crawled paper.
+![alt text](assets/show_detail.png)
+
 ## 📧 Contact
 LLM-ArxivPaper is currently under active development. Your feedback and contributions are highly valued!
 
