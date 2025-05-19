@@ -37,9 +37,11 @@ Now you can enjoy your journey with LLM-ArxivPaper simply using the following co
 ```shell
 streamlit run main.py
 ```
+You can access our web UI by visiting the URL http://localhost:8501/
 
 ## 💡 Features
-
+### 🐳 Scrape article
+You
 
 
 ## 📧 Contact
