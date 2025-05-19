@@ -9,16 +9,16 @@ from streamlit_pdf_viewer import pdf_viewer
 from utils.common import clean_blank, load_config
 from utils.get_html import download_pdfs, extract_pdf_links, extract_title_list, fetch_html
 
-# Initialization tasks
-load_dotenv()  # Load environment variables
-config = load_config()  # Load configuration
+# 初始化工作
+load_dotenv() ## 加载环境变量
+config = load_config() ## 加载配置
 
-# Set data save path
+## 设置数据保存路径
 data_dir = config['data_dir']
 if not os.path.exists(data_dir):
     os.makedirs(data_dir)
 
-# Set session variables
+## 设置session变量
 if 'pdf_list' not in st.session_state:
     st.session_state.pdf_list = []
 
@@ -28,16 +28,16 @@ if 'messages' not in st.session_state:
         "role": "assistant",
         "content": {
             "type": "text",
-            "text": "Please enter keywords"
+            "text": "请输入关键词"
         }
     })
 
-# Load page
-## Load sidebar
+# 加载页面
+## 加载侧边栏
 with st.sidebar:
     st.title("Arxiv Paper Collector")
 
-## Load main page
+## 加载主页面
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         if message["content"]["type"] == "text":
@@ -47,7 +47,10 @@ for message in st.session_state.messages:
                 for text in message["content"]['status']['texts']:
                     st.markdown(text)
 
-keypoint_query = st.chat_input("Please enter keywords separated by spaces")
+# with st.chat_message("assistant"):
+#     st.markdown("请输入关键词")
+
+keypoint_query = st.chat_input("请输入关键词，以空格分隔")
 if keypoint_query:
     keypoint_query_list = clean_blank(keypoint_query).split(" ")
     with st.chat_message("human"):
@@ -61,38 +64,38 @@ if keypoint_query:
         })
 
     keypoint = "+".join(keypoint_query_list)
-    base_url = config['url']  # https://arxiv.org/search   
-    # https://arxiv.org/search/?query=LLM+RL&searchtype=all&abstracts=show&order=-announced_date_first&size=50   
+    base_url = config['url'] # https://arxiv.org/search
+    # https://arxiv.org/search/?query=LLM+RL&searchtype=all&abstracts=show&order=-announced_date_first&size=50
     search_url = base_url + f'/?query={keypoint}' + '&searchtype=all&abstracts=show&order=-announced_date_first&size=25'
 
     with st.chat_message("assistant"):
         with st.status("Searching...", expanded=True) as status:
-            st.markdown("- Searching: " + search_url)
+            st.markdown("- 正在搜索：" + search_url)
             html = fetch_html(search_url)
 
-            st.markdown("- Saving intermediate results")
+            st.markdown("- 正在保存中间结果")
             with open(os.path.join(data_dir, 'paper.html'), "w", encoding='utf-8') as f:
                 f.write(html)
 
-            st.markdown("- Extracting PDF links")
+            st.markdown("- 正在获取PDF链接")
             pdf_list = extract_pdf_links(html)
             title_list = extract_title_list(html)
             assert len(pdf_list) == len(title_list)
 
-            status.update(label="Search Complete!", state="complete", expanded=False)
+            status.update(label="Searching Complete!", state="complete", expanded=False)
 
         st.session_state.messages.append({
             "role": "assistant",
             "content": {
                 "type": "status",
                 "status": {
-                    "label": "Search Complete!",
+                    "label": "Searching Complete!",
                     "state": "complete",
                     "expanded": False,
                     "texts": [
-                        "- Searching: " + search_url,
-                        "- Saving intermediate results",
-                        "- Extracting PDF links"
+                        "- 正在搜索：" + search_url,
+                        "- 正在保存中间结果",
+                        "- 正在获取PDF链接"
                     ]
                 }
             }
@@ -100,34 +103,34 @@ if keypoint_query:
         pdf_list = pdf_list[:config['max_num']]
         title_list = title_list[:config['max_num']]
 
-        st.markdown("Found the following PDFs" + '\n' + "\n".join([f"- {pdf_list[idx]}, {title_list[idx]}" for idx in range(len(pdf_list))]))
+        st.markdown("搜索到以下pdf" + '\n' + "\n".join([f"- {pdf_list[idx]}, {title_list[idx]}" for idx in range(len(pdf_list))]))
         st.session_state.messages.append({
             "role": "assistant",
             "content": {
                 "type": "text",
-                "text": "Found the following PDFs" + '\n' + "\n".join([f"- {pdf_list[idx]}, {title_list[idx]}" for idx in range(len(pdf_list))])
+                "text": "搜索到以下pdf" + '\n' + "\n".join([f"- {pdf_list[idx]}, {title_list[idx]}" for idx in range(len(pdf_list))])
             }
         })
 
     with st.chat_message("assistant"):
         with st.status("Downloading...", expanded=True) as status:
             for idx, pdf in enumerate(pdf_list):
-                st.markdown(f"- Downloading: {pdf}")
+                st.markdown(f"- 正在下载：{pdf}")
                 saved_paths = download_pdfs([pdf], data_dir + '/save_pdfs')
                 st.session_state.pdf_list.append((pdf, title_list[idx], saved_paths[0]))
             
-            status.update(label="Download Complete!", state="complete", expanded=False)
+            status.update(label="Downloading Complete!", state="complete", expanded=False)
         
         st.session_state.messages.append({
             "role": "assistant",
             "content": {
                 "type": "status",
                 "status": {
-                    "label": "Download Complete!",
+                    "label": "Downloading Complete!",
                     "state": "complete",
                     "expanded": False,
                     "texts": [
-                        "- Downloading: " + pdf for pdf in pdf_list
+                        "- 正在下载：" + pdf for pdf in pdf_list
                     ]
                 }
             }

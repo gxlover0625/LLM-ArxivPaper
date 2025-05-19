@@ -3,13 +3,11 @@ import pandas as pd
 
 from streamlit_pdf_viewer import pdf_viewer
 
-# Check if PDF list exists in session state
 if 'pdf_list' not in st.session_state:
-    st.write("Please perform a search first")
+    st.write("请先进行搜索")
 else:
     pdf_list = st.session_state.pdf_list
 
-    # Create a DataFrame for the PDF list
     pdf_df = pd.DataFrame(
         pdf_list, 
         columns=['URL', 'Title', 'FilePath'],
@@ -22,10 +20,9 @@ else:
         hide_index=True
     )
     
-    # Handle row selection and display PDF viewer
     if len(st.session_state.pdf_df.selection['rows']) != 0:
         row = int(st.session_state.pdf_df.selection['rows'][0])
-        file_path = pdf_df.loc[row, 'FilePath']
+        file_path = pdf_df.loc[row,'FilePath']
         with st.status("Loading...", expanded=True) as status:
             pdf_viewer(file_path)
             status.update(label="Loading Complete!", state="complete")
